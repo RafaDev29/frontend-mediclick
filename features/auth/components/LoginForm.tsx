@@ -1,18 +1,42 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { authService } from "@/features/auth/services/auth.service"
+import { useAuthStore } from "@/store/auth.store"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
+
+  const router = useRouter()
+  const { setAuth } = useAuthStore()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault()  // ← esto evita la recarga
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
+    setError("")
+    setSuccess("")
+
+    try {
+      const res = await authService.login({ email, password })
+      if (res.success) {
+        setSuccess(res.message)
+        setAuth(res.data.user, res.data.accessToken, res.data.refreshToken)
+        setTimeout(() => router.push("/dashboard"), 800)
+      } else {
+        setError(res.message)
+      }
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || "Error al conectar con el servidor"
+      setError(msg)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -20,8 +44,6 @@ export default function LoginForm() {
 
       {/* LEFT PANEL */}
       <div className="hidden lg:flex flex-col justify-between w-[55%] bg-gradient-to-br from-[#0a2e6e] via-[#1457c0] to-[#1e6fdb] p-14 relative overflow-hidden">
-
-        {/* Background circles */}
         <div className="absolute top-[-80px] right-[-80px] w-[340px] h-[340px] rounded-full bg-white/5" />
         <div className="absolute bottom-[-100px] left-[-60px] w-[400px] h-[400px] rounded-full bg-white/5" />
         <div className="absolute top-[40%] right-[5%] w-[180px] h-[180px] rounded-full bg-white/5" />
@@ -37,7 +59,6 @@ export default function LoginForm() {
         </div>
 
         <div className="z-10 space-y-6">
-       
           <h1 className="text-white text-5xl font-bold leading-tight tracking-tight">
             Gestiona tus<br />
             <span className="text-blue-200">citas médicas</span><br />
@@ -48,7 +69,7 @@ export default function LoginForm() {
           </p>
         </div>
 
-      
+        <div />
       </div>
 
       {/* RIGHT PANEL */}
@@ -66,7 +87,27 @@ export default function LoginForm() {
           </div>
 
           <h2 className="text-3xl font-bold text-[#0a2e6e] mb-1 tracking-tight">Bienvenido</h2>
-          <p className="text-slate-500 mb-10 text-sm">Ingresa tus credenciales para continuar</p>
+          <p className="text-slate-500 mb-6 text-sm">Ingresa tus credenciales para continuar</p>
+
+          {/* Alert error */}
+          {error && (
+            <div className="mb-5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              {error}
+            </div>
+          )}
+
+          {/* Alert success */}
+          {success && (
+            <div className="mb-5 px-4 py-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 text-sm flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              {success}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -125,12 +166,6 @@ export default function LoginForm() {
               </div>
             </div>
 
-            {/* Forgot password */}
-            <div className="flex justify-end">
-           
-            </div>
-
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}
@@ -144,17 +179,15 @@ export default function LoginForm() {
                   </svg>
                   Ingresando...
                 </>
-              ) : (
-                "Ingresar"
-              )}
+              ) : "Ingresar"}
             </button>
           </form>
 
           <p className="text-center text-xs text-slate-400 mt-10">
-            © {new Date().getFullYear()} D&A Intelligent Solutions  · Todos los derechos reservados
+            © {new Date().getFullYear()} D&A Intelligent Solutions · Todos los derechos reservados
           </p>
         </div>
       </div>
-    </div> 
+    </div>
   )
 }

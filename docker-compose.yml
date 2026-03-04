@@ -1,0 +1,12 @@
+services:
+  frontend-mediclick:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frontend-mediclick
+    ports:
+      - "3080:80"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3500/api/v1
+    restart: unless-stopped

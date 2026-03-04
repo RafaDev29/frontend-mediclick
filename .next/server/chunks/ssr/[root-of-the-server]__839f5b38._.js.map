@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../app/dashboard/appointments/page.tsx"],"sourcesContent":["export default function AppointmentsPage() {\n  return <div className=\"text-2xl font-bold text-[#0a2e6e]\">Atenciones</div>\n}"],"names":[],"mappings":"gXAAe,SAAS,IACtB,MAAO,CAAA,EAAA,EAAA,GAAA,EAAC,MAAA,CAAI,UAAU,6CAAoC,cAC5D"}

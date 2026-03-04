@@ -1,0 +1,15 @@
+{
+  "/(auth)/login/page": "/login",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/dashboard/appointments/page": "/dashboard/appointments",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/patients/[id]/page": "/dashboard/patients/[id]",
+  "/dashboard/patients/[id]/records/[recordId]/page": "/dashboard/patients/[id]/records/[recordId]",
+  "/dashboard/patients/page": "/dashboard/patients",
+  "/favicon.ico/route": "/favicon.ico",
+  "/home/page": "/home",
+  "/page": "/",
+  "/plans/page": "/plans",
+  "/solutions/page": "/solutions"
+}

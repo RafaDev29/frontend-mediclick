@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///Users/rafadev/Documents/DYA/FRONTEND/NEXT/frontend-mediclick/app/dashboard/patients/page.tsx"],"sourcesContent":["export default function PatientsPage() {\n  return <div className=\"text-2xl font-bold text-[#0a2e6e]\">Pacientes</div>\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBAAO,+YAAC;QAAI,WAAU;kBAAoC;;;;;;AAC5D"}}]
+}

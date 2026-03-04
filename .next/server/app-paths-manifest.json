@@ -1,0 +1,15 @@
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/dashboard/appointments/page": "app/dashboard/appointments/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/patients/[id]/page": "app/dashboard/patients/[id]/page.js",
+  "/dashboard/patients/[id]/records/[recordId]/page": "app/dashboard/patients/[id]/records/[recordId]/page.js",
+  "/dashboard/patients/page": "app/dashboard/patients/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/home/page": "app/home/page.js",
+  "/page": "app/page.js",
+  "/plans/page": "app/plans/page.js",
+  "/solutions/page": "app/solutions/page.js"
+}

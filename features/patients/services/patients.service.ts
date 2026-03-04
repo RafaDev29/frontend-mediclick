@@ -19,12 +19,17 @@ export const patientsService = {
   },
 
   update: async (id: string, payload: Partial<CreatePatientPayload>): Promise<ApiResponse<Patient>> => {
-    const { data } = await api.patch<ApiResponse<Patient>>(`/patients/${id}`, payload)
+    const { data } = await api.put<ApiResponse<Patient>>(`/patients/${id}`, payload)
     return data
   },
 
   delete: async (id: string): Promise<ApiResponse<null>> => {
     const { data } = await api.delete<ApiResponse<null>>(`/patients/${id}`)
+    return data
+  },
+
+  searchByDni: async (dni: string) => {
+    const { data } = await api.get(`/dni/${dni}`)
     return data
   },
 }

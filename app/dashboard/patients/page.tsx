@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { patientsService } from "@/features/patients/services/patients.service"
-import type { Patient, CreatePatientPayload, Gender, BloodType } from "@/features/patients/types/patient.types"
+import type { Patient, CreatePatientPayload } from "@/features/patients/types/patient.types"
+import { useRouter } from "next/navigation"
+import Breadcrumb from "@/components/shared/Breadcrumb"
 
 const GENDER_OPTIONS = [
   { value: "MALE", label: "Masculino" },
@@ -28,6 +30,8 @@ const emptyForm: CreatePatientPayload = {
 }
 
 export default function PatientsPage() {
+  const router = useRouter()
+
   const [patients, setPatients] = useState<Patient[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
@@ -37,6 +41,8 @@ export default function PatientsPage() {
   const [alert, setAlert] = useState<{ type: "success" | "error"; msg: string } | null>(null)
   const [search, setSearch] = useState("")
   const [deleteId, setDeleteId] = useState<string | null>(null)
+  const [dniLoading, setDniLoading] = useState(false)
+  const [donatesOrgans, setDonatesOrgans] = useState(false)
 
   const showAlert = (type: "success" | "error", msg: string) => {
     setAlert({ type, msg })
@@ -61,11 +67,13 @@ export default function PatientsPage() {
   const openCreate = () => {
     setEditPatient(null)
     setForm(emptyForm)
+    setDonatesOrgans(false)
     setShowModal(true)
   }
 
   const openEdit = (p: Patient) => {
     setEditPatient(p)
+    setDonatesOrgans(false)
     setForm({
       firstName: p.firstName, lastName: p.lastName, dni: p.dni,
       email: p.email, phone: p.phone,
@@ -76,6 +84,28 @@ export default function PatientsPage() {
       allergies: p.allergies || "", observations: p.observations || "",
     })
     setShowModal(true)
+  }
+
+  const handleDniSearch = async () => {
+    if (form.dni.length < 6) return
+    setDniLoading(true)
+    try {
+      const res = await patientsService.searchByDni(form.dni)
+      if (res.success) {
+        setForm(prev => ({
+          ...prev,
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+        }))
+        showAlert("success", res.message)
+      } else {
+        showAlert("error", res.message)
+      }
+    } catch (err: any) {
+      showAlert("error", err?.response?.data?.message || "DNI no encontrado")
+    } finally {
+      setDniLoading(false)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -130,7 +160,7 @@ export default function PatientsPage() {
   const labelCls = "block text-xs font-medium text-slate-600 mb-1.5"
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
 
       {/* Alert */}
       {alert && (
@@ -154,10 +184,7 @@ export default function PatientsPage() {
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-[#0a2e6e]">Patients</h1>
-          <p className="text-slate-500 text-sm mt-0.5">{patients.length} pacientes registrados</p>
-        </div>
+        <Breadcrumb items={[{ label: "Pacientes" }]} />
         <button
           onClick={openCreate}
           className="flex items-center gap-2 px-5 py-2.5 bg-[#1457c0] hover:bg-[#0a2e6e] text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-[#1457c0]/20"
@@ -206,13 +233,13 @@ export default function PatientsPage() {
         ) : (
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50/60">
-                <th className="text-left px-6 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Paciente</th>
-                <th className="text-left px-6 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">DNI</th>
-                <th className="text-left px-6 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Contacto</th>
-                <th className="text-left px-6 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Sangre</th>
-                <th className="text-left px-6 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Estado</th>
-                <th className="px-6 py-3.5" />
+              <tr className="bg-[#0a2e6e]">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Paciente</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">DNI</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Contacto</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Sangre</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Estado</th>
+                <th className="px-6 py-4"/>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
@@ -243,7 +270,7 @@ export default function PatientsPage() {
                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold ${
                       p.isActive ? "bg-emerald-50 text-emerald-600" : "bg-slate-100 text-slate-500"
                     }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${p.isActive ? "bg-emerald-500" : "bg-slate-400"}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${p.isActive ? "bg-emerald-500" : "bg-slate-400"}`}/>
                       {p.isActive ? "Activo" : "Inactivo"}
                     </span>
                   </td>
@@ -266,6 +293,14 @@ export default function PatientsPage() {
                           <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
                           <path d="M10 11v6"/><path d="M14 11v6"/>
                           <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => router.push(`/dashboard/patients/${p.id}`)}
+                        className="p-2 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
                         </svg>
                       </button>
                     </div>
@@ -304,21 +339,51 @@ export default function PatientsPage() {
               <div>
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Datos personales</p>
                 <div className="grid grid-cols-2 gap-4">
+
+                  {/* DNI con búsqueda */}
+                  <div className="col-span-2">
+                    <label className={labelCls}>DNI *</label>
+                    <div className="flex gap-2">
+                      <input
+                        required
+                        value={form.dni}
+                        onChange={f("dni")}
+                        placeholder="77777777"
+                        maxLength={8}
+                        className={inputCls}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleDniSearch}
+                        disabled={dniLoading || form.dni.length < 6}
+                        className="px-4 py-2.5 rounded-xl bg-[#1457c0] hover:bg-[#0a2e6e] text-white text-sm font-semibold transition-all disabled:opacity-50 flex items-center gap-2 shrink-0"
+                      >
+                        {dniLoading ? (
+                          <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="white" strokeWidth="4"/>
+                            <path className="opacity-75" fill="white" d="M4 12a8 8 0 018-8v8z"/>
+                          </svg>
+                        ) : (
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                          </svg>
+                        )}
+                        Buscar
+                      </button>
+                    </div>
+                  </div>
+
                   <div>
                     <label className={labelCls}>Nombres *</label>
-                    <input required value={form.firstName} onChange={f("firstName")} placeholder="Rafael Andrés" className={inputCls} />
+                    <input required value={form.firstName} onChange={f("firstName")} placeholder="Nombres" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Apellidos *</label>
-                    <input required value={form.lastName} onChange={f("lastName")} placeholder="Rossel Galarza" className={inputCls} />
-                  </div>
-                  <div>
-                    <label className={labelCls}>DNI *</label>
-                    <input required value={form.dni} onChange={f("dni")} placeholder="77451417" className={inputCls} />
+                    <input required value={form.lastName} onChange={f("lastName")} placeholder="Apellidos" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Fecha de nacimiento *</label>
-                    <input required type="date" value={form.birthDate} onChange={f("birthDate")} className={inputCls} />
+                    <input required type="date" value={form.birthDate} onChange={f("birthDate")} className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Género *</label>
@@ -332,6 +397,42 @@ export default function PatientsPage() {
                       {BLOOD_OPTIONS.map(b => <option key={b.value} value={b.value}>{b.label}</option>)}
                     </select>
                   </div>
+
+                  {/* Donación de órganos */}
+                  <div className="col-span-2">
+                    <label className={labelCls}>Donación de órganos</label>
+                    <div className="flex gap-3 mt-1">
+                      <button
+                        type="button"
+                        onClick={() => setDonatesOrgans(true)}
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
+                          donatesOrgans
+                            ? "bg-emerald-50 border-emerald-300 text-emerald-700"
+                            : "bg-slate-50 border-slate-200 text-slate-400 hover:border-emerald-200 hover:text-emerald-600"
+                        }`}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill={donatesOrgans ? "#059669" : "none"} stroke={donatesOrgans ? "#059669" : "currentColor"} strokeWidth="2">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        Sí dona
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setDonatesOrgans(false)}
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
+                          !donatesOrgans
+                            ? "bg-red-50 border-red-200 text-red-600"
+                            : "bg-slate-50 border-slate-200 text-slate-400 hover:border-red-200 hover:text-red-400"
+                        }`}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                        No dona
+                      </button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
@@ -341,11 +442,11 @@ export default function PatientsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className={labelCls}>Email *</label>
-                    <input required type="email" value={form.email} onChange={f("email")} placeholder="paciente@email.com" className={inputCls} />
+                    <input required type="email" value={form.email} onChange={f("email")} placeholder="paciente@email.com" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Teléfono *</label>
-                    <input required value={form.phone} onChange={f("phone")} placeholder="987654321" className={inputCls} />
+                    <input required value={form.phone} onChange={f("phone")} placeholder="987654321" className={inputCls}/>
                   </div>
                 </div>
               </div>
@@ -356,15 +457,15 @@ export default function PatientsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="col-span-2">
                     <label className={labelCls}>Dirección *</label>
-                    <input required value={form.address} onChange={f("address")} placeholder="Av. Lima 123" className={inputCls} />
+                    <input required value={form.address} onChange={f("address")} placeholder="Av. Lima 123" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Distrito *</label>
-                    <input required value={form.district} onChange={f("district")} placeholder="Miraflores" className={inputCls} />
+                    <input required value={form.district} onChange={f("district")} placeholder="Miraflores" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Ciudad *</label>
-                    <input required value={form.city} onChange={f("city")} placeholder="Lima" className={inputCls} />
+                    <input required value={form.city} onChange={f("city")} placeholder="Lima" className={inputCls}/>
                   </div>
                 </div>
               </div>
@@ -375,11 +476,11 @@ export default function PatientsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className={labelCls}>Nombre del seguro</label>
-                    <input value={form.insuranceName} onChange={f("insuranceName")} placeholder="Rimac" className={inputCls} />
+                    <input value={form.insuranceName} onChange={f("insuranceName")} placeholder="Rimac" className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Código del seguro</label>
-                    <input value={form.insuranceCode} onChange={f("insuranceCode")} placeholder="RIM-001" className={inputCls} />
+                    <input value={form.insuranceCode} onChange={f("insuranceCode")} placeholder="RIM-001" className={inputCls}/>
                   </div>
                 </div>
               </div>
@@ -390,11 +491,11 @@ export default function PatientsPage() {
                 <div className="grid grid-cols-1 gap-4">
                   <div>
                     <label className={labelCls}>Alergias</label>
-                    <input value={form.allergies} onChange={f("allergies")} placeholder="Penicilina, Ibuprofeno..." className={inputCls} />
+                    <input value={form.allergies} onChange={f("allergies")} placeholder="Penicilina, Ibuprofeno..." className={inputCls}/>
                   </div>
                   <div>
                     <label className={labelCls}>Observaciones</label>
-                    <textarea value={form.observations} onChange={f("observations")} placeholder="Observaciones relevantes..." rows={3} className={inputCls + " resize-none"} />
+                    <textarea value={form.observations} onChange={f("observations")} placeholder="Observaciones relevantes..." rows={3} className={inputCls + " resize-none"}/>
                   </div>
                 </div>
               </div>

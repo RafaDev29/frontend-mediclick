@@ -13,8 +13,9 @@
 # testing
 /coverage
 
-# next.js
 /out/
+/.next/cache
+/.next/dev
 
 # production
 /build

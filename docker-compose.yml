@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: frontend-mediclick
     ports:
-      - "3080:80"
+      - "3090:80"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=http://localhost:3500/api/v1
+      - NEXT_PUBLIC_API_URL=http://159.223.200.169:4080/api/v1
     restart: unless-stopped

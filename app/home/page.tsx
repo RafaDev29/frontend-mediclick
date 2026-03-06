@@ -1,13 +1,22 @@
+import Image from "next/image"
+
 export default function HomePage() {
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
         .home-root {
           font-family: 'DM Sans', sans-serif;
           background: #fff;
           color: #0a2e6e;
+          overflow-x: hidden;
         }
 
         .hero {
@@ -260,11 +269,162 @@ export default function HomePage() {
           font-weight: 300;
         }
 
+        /* ========== TABLET (1024px) ========== */
+        @media (max-width: 1024px) {
+          .hero-content {
+            padding: 0 48px;
+          }
+          .features {
+            padding: 80px 48px;
+          }
+          .stats {
+            padding: 60px 48px;
+            gap: 32px;
+          }
+          .footer {
+            padding: 32px 48px;
+          }
+          .stat-value {
+            font-size: 40px;
+          }
+        }
+
+        /* ========== MOBILE LANDSCAPE / TABLET SMALL (768px) ========== */
         @media (max-width: 768px) {
-          .hero-content { padding: 0 24px; }
-          .features { padding: 60px 24px; }
-          .stats { padding: 60px 24px; }
-          .footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+          .hero {
+            min-height: 80vh;
+          }
+          .hero-content {
+            padding: 0 24px;
+          }
+          .hero h1 {
+            font-size: 36px;
+          }
+          .hero p {
+            font-size: 16px;
+            margin-bottom: 32px;
+          }
+          .hero-cta {
+            padding: 12px 28px;
+            font-size: 14px;
+          }
+          .features {
+            padding: 60px 24px;
+          }
+          .section-title {
+            font-size: 28px;
+          }
+          .section-sub {
+            font-size: 15px;
+            margin-bottom: 40px;
+          }
+          .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+          .feature-card {
+            padding: 28px 24px;
+          }
+          .stats {
+            padding: 48px 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+          }
+          .stat-value {
+            font-size: 36px;
+          }
+          .stat-label {
+            font-size: 13px;
+          }
+          .footer {
+            padding: 28px 24px;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
+
+        /* ========== MOBILE (480px) ========== */
+        @media (max-width: 480px) {
+          .hero {
+            min-height: 70vh;
+            align-items: flex-end;
+            padding-bottom: 48px;
+          }
+          .hero-content {
+            padding: 0 20px;
+          }
+          .hero-badge {
+            font-size: 11px;
+            padding: 5px 12px;
+            margin-bottom: 20px;
+          }
+          .hero h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+          }
+          .hero p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+          }
+          .hero-cta {
+            padding: 12px 24px;
+            font-size: 13px;
+            border-radius: 12px;
+            width: 100%;
+            justify-content: center;
+          }
+          .features {
+            padding: 48px 20px;
+          }
+          .section-label {
+            font-size: 11px;
+          }
+          .section-title {
+            font-size: 24px;
+          }
+          .section-sub {
+            font-size: 14px;
+            margin-bottom: 32px;
+          }
+          .features-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+          .feature-card {
+            padding: 24px 20px;
+            border-radius: 16px;
+          }
+          .feature-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+          }
+          .feature-card h3 {
+            font-size: 16px;
+          }
+          .feature-card p {
+            font-size: 13px;
+          }
+          .stats {
+            padding: 40px 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+          }
+          .stat-value {
+            font-size: 28px;
+          }
+          .stat-label {
+            font-size: 11px;
+          }
+          .footer {
+            padding: 24px 20px;
+            gap: 12px;
+          }
+          .footer-copy {
+            font-size: 12px;
+          }
         }
       `}</style>
 
@@ -371,18 +531,19 @@ export default function HomePage() {
         </section>
 
         {/* FOOTER */}
-        <footer className="footer">
+       <footer className="footer">
           <a href="/home" className="footer-logo">
-            <div className="footer-logo-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span>MediClick</span>
+            <Image
+              src="/logoooo.png"
+              alt="SGIP"
+              width={120}
+              height={40}
+              className="h-8 w-auto object-contain"
+              unoptimized
+            />
+            <span>SGIP</span>
           </a>
-          <p className="footer-copy">
-            © 2026 DYA Solutions · Todos los derechos reservados
-          </p>
+          <p className="footer-copy">© 2026 DYA Solutions · Todos los derechos reservados</p>
         </footer>
 
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image"
 export default function PlansPage() {
   const plans = [
     {
@@ -362,18 +363,23 @@ export default function PlansPage() {
           </div>
         </section>
 
+
         {/* FOOTER */}
         <footer className="plans-footer">
-          <a href="/home" className="footer-logo">
-            <div className="footer-logo-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span>SGIP</span>
-          </a>
-          <p className="footer-copy">© 2026 DYA Solutions · Todos los derechos reservados</p>
-        </footer>
+                 <a href="/home" className="footer-logo">
+                   <Image
+                     src="/logoooo.png"
+                     alt="SGIP"
+                     width={120}
+                     height={40}
+                     className="h-8 w-auto object-contain"
+                     unoptimized
+                   />
+                   <span>SGIP</span>
+                 </a>
+                 <p className="footer-copy">© 2026 DYA Solutions · Todos los derechos reservados</p>
+               </footer>
+       
 
       </div>
     </>

@@ -58,90 +58,388 @@ export default function RecordDetailPage() {
   )
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    <>
+      <style>{`
+        .rd-card {
+          background: #fff;
+          border-radius: 16px;
+          border: 1px solid #f1f5f9;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
 
-      <Breadcrumb items={[
-        { label: "Pacientes", href: "/dashboard/patients" },
-        { label: "Historial clínico", href: `/dashboard/patients/${id}` },
-        { label: "Detalle" },
-      ]} />
-      {/* Header */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8">
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="flex items-center gap-3 mb-1">
-              <h1 className="text-xl font-bold text-[#0a2e6e]">{record.diagnosis}</h1>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-600">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                Completado
-              </span>
+        /* Header card */
+        .rd-header {
+          padding: 32px;
+        }
+
+        .rd-header-inner {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .rd-title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 4px;
+          flex-wrap: wrap;
+        }
+
+        .rd-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: #0a2e6e;
+        }
+
+        .rd-subtitle {
+          color: #94a3b8;
+          font-size: 14px;
+        }
+
+        .rd-date-block {
+          text-align: right;
+          flex-shrink: 0;
+        }
+
+        .rd-date-label {
+          font-size: 12px;
+          color: #94a3b8;
+          margin-bottom: 2px;
+        }
+
+        .rd-date-value {
+          font-size: 14px;
+          font-weight: 600;
+          color: #334155;
+        }
+
+        /* Vitals */
+        .rd-vitals {
+          padding: 24px;
+        }
+
+        .rd-section-title {
+          font-size: 13px;
+          font-weight: 700;
+          color: #0a2e6e;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          margin-bottom: 16px;
+        }
+
+        .rd-vitals-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 16px;
+        }
+
+        .rd-vital-item {
+          background: #f8fafc;
+          border-radius: 12px;
+          padding: 16px;
+          text-align: center;
+        }
+
+        .rd-vital-icon {
+          font-size: 20px;
+          margin-bottom: 4px;
+        }
+
+        .rd-vital-value {
+          font-size: 14px;
+          font-weight: 700;
+          color: #0a2e6e;
+        }
+
+        .rd-vital-label {
+          font-size: 12px;
+          color: #94a3b8;
+          margin-top: 2px;
+        }
+
+        /* Diagnosis + Treatment grid */
+        .rd-two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+
+        .rd-two-col-card {
+          padding: 24px;
+        }
+
+        .rd-text {
+          font-size: 14px;
+          color: #334155;
+          line-height: 1.7;
+        }
+
+        /* Notes */
+        .rd-notes {
+          padding: 24px;
+        }
+
+        .rd-notes-text {
+          font-size: 14px;
+          color: #475569;
+          line-height: 1.7;
+        }
+
+        /* Next appointment */
+        .rd-next {
+          background: #eff6ff;
+          border-radius: 16px;
+          border: 1px solid #bfdbfe;
+          padding: 24px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .rd-next-icon {
+          width: 40px; height: 40px;
+          border-radius: 12px;
+          background: #1457c0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .rd-next-label {
+          font-size: 12px;
+          color: #1457c0;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          margin-bottom: 2px;
+        }
+
+        .rd-next-date {
+          font-size: 14px;
+          font-weight: 700;
+          color: #0a2e6e;
+        }
+
+        /* ===== TABLET (768px) ===== */
+        @media (max-width: 768px) {
+          .rd-header {
+            padding: 20px;
+          }
+
+          .rd-header-inner {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .rd-date-block {
+            text-align: left;
+          }
+
+          .rd-title {
+            font-size: 18px;
+          }
+
+          .rd-vitals {
+            padding: 20px;
+          }
+
+          .rd-vitals-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+          }
+
+          .rd-two-col {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+
+          .rd-two-col-card {
+            padding: 20px;
+          }
+
+          .rd-notes {
+            padding: 20px;
+          }
+
+          .rd-next {
+            padding: 20px;
+          }
+        }
+
+        /* ===== MOBILE (480px) ===== */
+        @media (max-width: 480px) {
+          .rd-header {
+            padding: 16px;
+          }
+
+          .rd-title-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+
+          .rd-title {
+            font-size: 16px;
+          }
+
+          .rd-subtitle {
+            font-size: 13px;
+          }
+
+          .rd-vitals {
+            padding: 16px;
+          }
+
+          .rd-vitals-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+          }
+
+          .rd-vital-item {
+            padding: 12px;
+          }
+
+          .rd-vital-icon {
+            font-size: 18px;
+          }
+
+          .rd-vital-value {
+            font-size: 13px;
+          }
+
+          .rd-vital-label {
+            font-size: 11px;
+          }
+
+          .rd-two-col-card {
+            padding: 16px;
+          }
+
+          .rd-section-title {
+            font-size: 12px;
+          }
+
+          .rd-text {
+            font-size: 13px;
+          }
+
+          .rd-notes {
+            padding: 16px;
+          }
+
+          .rd-notes-text {
+            font-size: 13px;
+          }
+
+          .rd-next {
+            padding: 16px;
+            gap: 12px;
+          }
+
+          .rd-next-icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+          }
+
+          .rd-next-label {
+            font-size: 11px;
+          }
+
+          .rd-next-date {
+            font-size: 13px;
+          }
+        }
+      `}</style>
+
+      <div className="space-y-6 max-w-4xl">
+
+        <Breadcrumb items={[
+          { label: "Pacientes", href: "/dashboard/patients" },
+          { label: "Historial clínico", href: `/dashboard/patients/${id}` },
+          { label: "Detalle" },
+        ]} />
+
+        {/* Header */}
+        <div className="rd-card rd-header">
+          <div className="rd-header-inner">
+            <div>
+              <div className="rd-title-row">
+                <h1 className="rd-title">{record.diagnosis}</h1>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Completado
+                </span>
+              </div>
+              <p className="rd-subtitle">{record.specialty} · {record.doctor}</p>
             </div>
-            <p className="text-slate-400 text-sm">{record.specialty} · {record.doctor}</p>
+            <div className="rd-date-block">
+              <p className="rd-date-label">Fecha de atención</p>
+              <p className="rd-date-value">
+                {new Date(record.date).toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" })}
+              </p>
+            </div>
           </div>
-          <div className="text-right">
-            <p className="text-xs text-slate-400 mb-0.5">Fecha de atención</p>
-            <p className="text-sm font-semibold text-slate-700">
-              {new Date(record.date).toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" })}
+        </div>
+
+        {/* Vital signs */}
+        <div className="rd-card rd-vitals">
+          <h2 className="rd-section-title">Signos vitales</h2>
+          <div className="rd-vitals-grid">
+            {[
+              { label: "Presión arterial", value: record.vitalSigns.pressure, icon: "❤️" },
+              { label: "Temperatura", value: record.vitalSigns.temp, icon: "🌡️" },
+              { label: "Pulso", value: record.vitalSigns.pulse, icon: "💓" },
+              { label: "Peso", value: record.vitalSigns.weight, icon: "⚖️" },
+              { label: "Talla", value: record.vitalSigns.height, icon: "📏" },
+            ].map((v, i) => (
+              <div key={i} className="rd-vital-item">
+                <p className="rd-vital-icon">{v.icon}</p>
+                <p className="rd-vital-value">{v.value}</p>
+                <p className="rd-vital-label">{v.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Diagnosis & Treatment */}
+        <div className="rd-two-col">
+          <div className="rd-card rd-two-col-card">
+            <h2 className="rd-section-title">Diagnóstico</h2>
+            <p className="rd-text">{record.diagnosis}</p>
+          </div>
+          <div className="rd-card rd-two-col-card">
+            <h2 className="rd-section-title">Tratamiento</h2>
+            <p className="rd-text">{record.treatment}</p>
+          </div>
+        </div>
+
+        {/* Notes */}
+        <div className="rd-card rd-notes">
+          <h2 className="rd-section-title">Notas del médico</h2>
+          <p className="rd-notes-text">{record.notes}</p>
+        </div>
+
+        {/* Next appointment */}
+        <div className="rd-next">
+          <div className="rd-next-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          <div>
+            <p className="rd-next-label">Próxima cita</p>
+            <p className="rd-next-date">
+              {new Date(record.nextAppointment).toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" })}
             </p>
           </div>
         </div>
-      </div>
 
-      {/* Vital signs */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-        <h2 className="text-sm font-bold text-[#0a2e6e] mb-4 uppercase tracking-wider">Signos vitales</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {[
-            { label: "Presión arterial", value: record.vitalSigns.pressure, icon: "❤️" },
-            { label: "Temperatura", value: record.vitalSigns.temp, icon: "🌡️" },
-            { label: "Pulso", value: record.vitalSigns.pulse, icon: "💓" },
-            { label: "Peso", value: record.vitalSigns.weight, icon: "⚖️" },
-            { label: "Talla", value: record.vitalSigns.height, icon: "📏" },
-          ].map((v, i) => (
-            <div key={i} className="bg-slate-50 rounded-xl p-4 text-center">
-              <p className="text-xl mb-1">{v.icon}</p>
-              <p className="text-sm font-bold text-[#0a2e6e]">{v.value}</p>
-              <p className="text-xs text-slate-400 mt-0.5">{v.label}</p>
-            </div>
-          ))}
-        </div>
       </div>
-
-      {/* Diagnosis & Treatment */}
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-          <h2 className="text-sm font-bold text-[#0a2e6e] mb-3 uppercase tracking-wider">Diagnóstico</h2>
-          <p className="text-slate-700 text-sm leading-relaxed">{record.diagnosis}</p>
-        </div>
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-          <h2 className="text-sm font-bold text-[#0a2e6e] mb-3 uppercase tracking-wider">Tratamiento</h2>
-          <p className="text-slate-700 text-sm leading-relaxed">{record.treatment}</p>
-        </div>
-      </div>
-
-      {/* Notes */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-        <h2 className="text-sm font-bold text-[#0a2e6e] mb-3 uppercase tracking-wider">Notas del médico</h2>
-        <p className="text-slate-600 text-sm leading-relaxed">{record.notes}</p>
-      </div>
-
-      {/* Next appointment */}
-      <div className="bg-[#eff6ff] rounded-2xl border border-blue-100 p-6 flex items-center gap-4">
-        <div className="w-10 h-10 rounded-xl bg-[#1457c0] flex items-center justify-center shrink-0">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-            <rect x="3" y="4" width="18" height="18" rx="2" />
-            <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-        </div>
-        <div>
-          <p className="text-xs text-[#1457c0] font-semibold uppercase tracking-wider mb-0.5">Próxima cita</p>
-          <p className="text-sm font-bold text-[#0a2e6e]">
-            {new Date(record.nextAppointment).toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" })}
-          </p>
-        </div>
-      </div>
-
-    </div>
+    </>
   )
 }

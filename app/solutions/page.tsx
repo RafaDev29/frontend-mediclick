@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function SolutionsPage() {
   return (
     <>
@@ -340,9 +342,9 @@ export default function SolutionsPage() {
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
                 ),
                 title: "Gestión de Pacientes",
@@ -353,10 +355,10 @@ export default function SolutionsPage() {
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="12" y1="18" x2="12" y2="12"/>
-                    <line x1="9" y1="15" x2="15" y2="15"/>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="15" y2="15" />
                   </svg>
                 ),
                 title: "Historial Clínico",
@@ -367,7 +369,7 @@ export default function SolutionsPage() {
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                   </svg>
                 ),
                 title: "Reportes y Estadísticas",
@@ -378,9 +380,9 @@ export default function SolutionsPage() {
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
                   </svg>
                 ),
                 title: "Agenda de Citas",
@@ -411,7 +413,7 @@ export default function SolutionsPage() {
                 cls: "admin",
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                   </svg>
                 ),
                 role: "Administrador",
@@ -427,7 +429,7 @@ export default function SolutionsPage() {
                 cls: "doctor",
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                   </svg>
                 ),
                 role: "Médico",
@@ -443,9 +445,9 @@ export default function SolutionsPage() {
                 cls: "receptionist",
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
                   </svg>
                 ),
                 role: "Recepcionista",
@@ -477,12 +479,15 @@ export default function SolutionsPage() {
         {/* FOOTER */}
         <footer className="sol-footer">
           <a href="/home" className="footer-logo">
-            <div className="footer-logo-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span>MediClick</span>
+            <Image
+              src="/logoooo.png"
+              alt="SGIP"
+              width={120}
+              height={40}
+              className="h-8 w-auto object-contain"
+              unoptimized
+            />
+            <span>SGIP</span>
           </a>
           <p className="footer-copy">© 2026 DYA Solutions · Todos los derechos reservados</p>
         </footer>

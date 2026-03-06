@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -15,15 +16,23 @@ export default function PublicNavbar() {
   return (
     <nav className="w-full h-16 bg-[#0a2e6e] flex items-center justify-between px-10 sticky top-0 z-50">
       {/* Logo */}
-      <Link href="/home" className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        <span className="font-bold text-white text-base tracking-tight">MediClick</span>
-      </Link>
-
+     {/* Logo */}
+{/* Logo */}
+<Link href="/home" className="flex items-center gap-3">
+  <Image
+    src="/logoooo.png"
+    alt="SGIP"
+    width={300}
+    height={80}
+    className="h-10 w-auto object-contain"
+    unoptimized
+    priority
+  />
+  <div className="flex flex-col leading-tight">
+    <span className="font-bold text-white text-lg tracking-tight">SGIP</span>
+    <span className="text-[10px] text-white/50 tracking-wide">Sistema de Gestión Integral de Pacientes</span>
+  </div>
+</Link>
       {/* Links */}
       <div className="flex items-center gap-1">
         {navLinks.map((link) => {
@@ -53,7 +62,7 @@ export default function PublicNavbar() {
       >
         Iniciar sesión
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><polyline points="10 17 15 12 10 7" /><line x1="15" y1="12" x2="3" y2="12" />
         </svg>
       </Link>
     </nav>

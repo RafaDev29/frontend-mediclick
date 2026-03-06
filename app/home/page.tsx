@@ -10,7 +10,6 @@ export default function HomePage() {
           color: #0a2e6e;
         }
 
-        /* HERO */
         .hero {
           position: relative;
           min-height: 92vh;
@@ -22,7 +21,7 @@ export default function HomePage() {
         .hero-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1800&q=80');
+          background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&q=80');
           background-size: cover;
           background-position: center;
           filter: brightness(0.22);
@@ -121,7 +120,6 @@ export default function HomePage() {
           box-shadow: 0 12px 40px rgba(20,87,192,0.5);
         }
 
-        /* FEATURES */
         .features {
           padding: 100px 80px;
           background: #f8fafc;
@@ -198,7 +196,6 @@ export default function HomePage() {
           font-weight: 300;
         }
 
-        /* STATS */
         .stats {
           padding: 80px;
           background: #0a2e6e;
@@ -224,7 +221,6 @@ export default function HomePage() {
           letter-spacing: 0.04em;
         }
 
-        /* FOOTER */
         .footer {
           background: #060f24;
           padding: 36px 80px;
@@ -281,15 +277,15 @@ export default function HomePage() {
           <div className="hero-content">
             <div className="hero-badge">
               <span />
-              Plataforma hospitalaria digital
+              Plataforma clínica digital
             </div>
             <h1>
-              Gestión de citas<br />
-              <em>médicas simple</em><br />
-              y eficiente
+              Gestión de pacientes<br />
+              <em>completa y segura</em><br />
+              en tu clínica
             </h1>
             <p>
-              MediClick centraliza la agenda médica de tu hospital. Programa, confirma y da seguimiento a cada cita con facilidad.
+              SGIP centraliza el historial clínico, datos y atenciones de cada paciente. Todo tu equipo médico conectado en un solo lugar.
             </p>
             <a href="/login" className="hero-cta">
               Comenzar ahora
@@ -302,21 +298,23 @@ export default function HomePage() {
 
         {/* FEATURES */}
         <section className="features">
-          <p className="section-label">¿Por qué MediClick?</p>
-          <h2 className="section-title">Todo lo que necesita<br />tu hospital</h2>
-          <p className="section-sub">Una plataforma diseñada para simplificar la gestión médica diaria, desde la agenda hasta el historial del paciente.</p>
+          <p className="section-label">¿Por qué SGIP?</p>
+          <h2 className="section-title">Todo lo que necesita<br />tu clínica</h2>
+          <p className="section-sub">Una plataforma diseñada para simplificar la gestión de pacientes, desde el historial clínico hasta el seguimiento de cada atención.</p>
 
           <div className="features-grid">
             {[
               {
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <line x1="9" y1="15" x2="15" y2="15"/>
                   </svg>
                 ),
-                title: "Agenda inteligente",
-                desc: "Programa y gestiona citas médicas en tiempo real, evitando conflictos de horarios y reduciendo ausencias."
+                title: "Historial clínico completo",
+                desc: "Registra y accede al historial médico de cada paciente: diagnósticos, tratamientos, exámenes, alergias y evoluciones en un solo lugar."
               },
               {
                 icon: (
@@ -327,7 +325,7 @@ export default function HomePage() {
                   </svg>
                 ),
                 title: "Gestión de pacientes",
-                desc: "Centraliza el historial, datos y atenciones de cada paciente en un solo lugar, accesible para todo el equipo médico."
+                desc: "Administra el perfil completo de cada paciente: datos personales, contactos de emergencia, antecedentes familiares y documentos adjuntos."
               },
               {
                 icon: (
@@ -335,8 +333,8 @@ export default function HomePage() {
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                   </svg>
                 ),
-                title: "Seguimiento en tiempo real",
-                desc: "Monitorea el estado de cada atención médica con actualizaciones instantáneas para médicos y recepcionistas."
+                title: "Seguimiento de atenciones",
+                desc: "Monitorea el estado clínico de cada paciente con actualizaciones en tiempo real para médicos, enfermeras y recepcionistas."
               },
               {
                 icon: (
@@ -345,7 +343,7 @@ export default function HomePage() {
                   </svg>
                 ),
                 title: "Acceso por roles",
-                desc: "Control de acceso seguro para administradores, médicos y recepcionistas, cada uno con su vista personalizada."
+                desc: "Control de acceso seguro para administradores, médicos y recepcionistas de la clínica, cada uno con su vista personalizada."
               },
             ].map((f, i) => (
               <div className="feature-card" key={i}>

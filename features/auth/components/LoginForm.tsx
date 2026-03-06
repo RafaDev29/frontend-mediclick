@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { authService } from "@/features/auth/services/auth.service"
 import { useAuthStore } from "@/store/auth.store"
 import Link from "next/link"
+import Image from "next/image"
 
 
 export default function LoginForm() {
@@ -19,7 +20,7 @@ export default function LoginForm() {
   const { setAuth } = useAuthStore()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()  // ← esto evita la recarga
+    e.preventDefault()
     setLoading(true)
     setError("")
     setSuccess("")
@@ -59,23 +60,31 @@ export default function LoginForm() {
         <div className="absolute top-[-80px] right-[-80px] w-[340px] h-[340px] rounded-full bg-white/5" />
         <div className="absolute bottom-[-100px] left-[-60px] w-[400px] h-[400px] rounded-full bg-white/5" />
 
+        {/* Logo */}
         <Link href="/home" className="flex items-center gap-3 z-10">
-            <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#1457c0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <span className="text-white font-semibold text-xl tracking-tight">MediClick</span>
-          </Link>
+          <Image
+            src="/logoooo.png"
+            alt="SGIP"
+            width={300}
+            height={80}
+            className="h-10 w-auto object-contain"
+            unoptimized
+            priority
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="font-bold text-white text-lg tracking-tight">SGIP</span>
+            <span className="text-[10px] text-white/50 tracking-wide">Sistema de Gestión Integral de Pacientes</span>
+          </div>
+        </Link>
 
         <div className="z-10 space-y-6">
           <h1 className="text-white text-5xl font-bold leading-tight tracking-tight">
             Gestiona tus<br />
-            <span className="text-blue-200">citas médicas</span><br />
+            <span className="text-blue-200">pacientes</span><br />
             fácilmente
           </h1>
           <p className="text-white/60 text-lg max-w-sm leading-relaxed">
-            Plataforma integral para hospitales. Agenda, gestiona y da seguimiento a cada paciente.
+            Plataforma integral para Clinicas. Administra, controla y da seguimiento a cada paciente.
           </p>
         </div>
 
@@ -84,8 +93,6 @@ export default function LoginForm() {
       {/* RIGHT PANEL */}
       <div className="flex-1 flex items-center justify-center bg-[#f0f4fb] px-8">
         <div className="w-full max-w-md">
-
-        
 
           <h2 className="text-3xl font-bold text-[#0a2e6e] mb-1 tracking-tight">Bienvenido</h2>
           <p className="text-slate-500 mb-6 text-sm">Ingresa tus credenciales para continuar</p>

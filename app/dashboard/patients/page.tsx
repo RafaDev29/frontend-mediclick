@@ -22,6 +22,29 @@ const BLOOD_OPTIONS = [
   { value: "AB_NEGATIVE", label: "AB-" },
 ]
 
+const PATIENT_STATUS_OPTIONS = [
+  { value: "PRE_REGISTRO", label: "Pre-registro", color: "bg-slate-100 text-slate-600" },
+  { value: "REGISTRADO", label: "Registrado", color: "bg-blue-50 text-blue-600" },
+  { value: "CITA_PROGRAMADA", label: "Cita Programada", color: "bg-indigo-50 text-indigo-600" },
+  { value: "EN_SALA_ESPERA", label: "En Sala de Espera", color: "bg-amber-50 text-amber-600" },
+  { value: "EN_TRIAJE", label: "En Triaje / Evaluación Inicial", color: "bg-orange-50 text-orange-600" },
+  { value: "EN_CONSULTA", label: "En Consulta Médica", color: "bg-cyan-50 text-cyan-600" },
+  { value: "EN_EXAMENES", label: "En Exámenes / Diagnóstico", color: "bg-purple-50 text-purple-600" },
+  { value: "EN_PROCEDIMIENTO", label: "En Procedimiento", color: "bg-pink-50 text-pink-600" },
+  { value: "DIAGNOSTICO_EMITIDO", label: "Diagnóstico Emitido", color: "bg-teal-50 text-teal-600" },
+  { value: "TRATAMIENTO_EN_CURSO", label: "Tratamiento en Curso", color: "bg-yellow-50 text-yellow-700" },
+  { value: "HOSPITALIZACION", label: "Observación / Hospitalización", color: "bg-red-50 text-red-600" },
+  { value: "ALTA_MEDICA", label: "Alta Médica", color: "bg-emerald-50 text-emerald-600" },
+  { value: "FACTURACION_PENDIENTE", label: "Facturación Pendiente", color: "bg-orange-50 text-orange-700" },
+  { value: "PAGO_REALIZADO", label: "Pago Realizado", color: "bg-green-50 text-green-600" },
+  { value: "CONTROL_PROGRAMADO", label: "Control Programado", color: "bg-sky-50 text-sky-600" },
+  { value: "CERRADO", label: "Cerrado", color: "bg-gray-100 text-gray-500" },
+]
+
+const getRandomStatus = (index: number) => {
+  return PATIENT_STATUS_OPTIONS[index % PATIENT_STATUS_OPTIONS.length]
+}
+
 const emptyForm: CreatePatientPayload = {
   firstName: "", lastName: "", dni: "", email: "", phone: "",
   birthDate: "", gender: "MALE", bloodType: "O_POSITIVE",
@@ -43,6 +66,7 @@ export default function PatientsPage() {
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const [dniLoading, setDniLoading] = useState(false)
   const [donatesOrgans, setDonatesOrgans] = useState(false)
+  const [formStatus, setFormStatus] = useState("PRE_REGISTRO")
 
   const showAlert = (type: "success" | "error", msg: string) => {
     setAlert({ type, msg })
@@ -68,12 +92,14 @@ export default function PatientsPage() {
     setEditPatient(null)
     setForm(emptyForm)
     setDonatesOrgans(false)
+    setFormStatus("PRE_REGISTRO")
     setShowModal(true)
   }
 
   const openEdit = (p: Patient) => {
     setEditPatient(p)
     setDonatesOrgans(false)
+    setFormStatus("REGISTRADO")
     setForm({
       firstName: p.firstName, lastName: p.lastName, dni: p.dni,
       email: p.email, phone: p.phone,
@@ -238,75 +264,86 @@ export default function PatientsPage() {
                 <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">DNI</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Contacto</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Sangre</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Registro</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-white/70 uppercase tracking-wider">Estado</th>
                 <th className="px-6 py-4"/>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
-              {filtered.map(p => (
-                <tr key={p.id} className="hover:bg-slate-50/60 transition-colors">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#eff6ff] flex items-center justify-center text-[#1457c0] font-bold text-sm shrink-0">
-                        {p.firstName[0]}{p.lastName[0]}
+              {filtered.map((p, index) => {
+                const status = getRandomStatus(index)
+                return (
+                  <tr key={p.id} className="hover:bg-slate-50/60 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-[#eff6ff] flex items-center justify-center text-[#1457c0] font-bold text-sm shrink-0">
+                          {p.firstName[0]}{p.lastName[0]}
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-slate-800">{p.fullName}</p>
+                          <p className="text-xs text-slate-400">{p.city}, {p.district}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-800">{p.fullName}</p>
-                        <p className="text-xs text-slate-400">{p.city}, {p.district}</p>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-slate-600">{p.dni}</td>
+                    <td className="px-6 py-4">
+                      <p className="text-sm text-slate-600">{p.email}</p>
+                      <p className="text-xs text-slate-400">{p.phone}</p>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-red-50 text-red-600 text-xs font-semibold">
+                        {BLOOD_OPTIONS.find(b => b.value === p.bloodType)?.label}
+                      </span>
+                    </td>
+                    {/* Registro */}
+                    <td className="px-6 py-4">
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold ${
+                        p.isActive ? "bg-emerald-50 text-emerald-600" : "bg-slate-100 text-slate-500"
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${p.isActive ? "bg-emerald-500" : "bg-slate-400"}`}/>
+                        {p.isActive ? "Activo" : "Inactivo"}
+                      </span>
+                    </td>
+                    {/* Estado */}
+                    <td className="px-6 py-4">
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap ${status.color}`}>
+                        {status.label}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2 justify-end">
+                        <button
+                          onClick={() => openEdit(p)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-[#1457c0] hover:bg-[#eff6ff] transition-all"
+                        >
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => setDeleteId(p.id)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all"
+                        >
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                            <path d="M10 11v6"/><path d="M14 11v6"/>
+                            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => router.push(`/dashboard/patients/${p.id}`)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                        >
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                          </svg>
+                        </button>
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-slate-600">{p.dni}</td>
-                  <td className="px-6 py-4">
-                    <p className="text-sm text-slate-600">{p.email}</p>
-                    <p className="text-xs text-slate-400">{p.phone}</p>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-red-50 text-red-600 text-xs font-semibold">
-                      {BLOOD_OPTIONS.find(b => b.value === p.bloodType)?.label}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold ${
-                      p.isActive ? "bg-emerald-50 text-emerald-600" : "bg-slate-100 text-slate-500"
-                    }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${p.isActive ? "bg-emerald-500" : "bg-slate-400"}`}/>
-                      {p.isActive ? "Activo" : "Inactivo"}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2 justify-end">
-                      <button
-                        onClick={() => openEdit(p)}
-                        className="p-2 rounded-lg text-slate-400 hover:text-[#1457c0] hover:bg-[#eff6ff] transition-all"
-                      >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => setDeleteId(p.id)}
-                        className="p-2 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all"
-                      >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-                          <path d="M10 11v6"/><path d="M14 11v6"/>
-                          <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => router.push(`/dashboard/patients/${p.id}`)}
-                        className="p-2 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
-                      >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
-                        </svg>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         )}
@@ -395,6 +432,20 @@ export default function PatientsPage() {
                     <label className={labelCls}>Tipo de sangre *</label>
                     <select required value={form.bloodType} onChange={f("bloodType")} className={inputCls}>
                       {BLOOD_OPTIONS.map(b => <option key={b.value} value={b.value}>{b.label}</option>)}
+                    </select>
+                  </div>
+
+                  {/* Estado del paciente */}
+                  <div>
+                    <label className={labelCls}>Estado del paciente</label>
+                    <select
+                      value={formStatus}
+                      onChange={(e) => setFormStatus(e.target.value)}
+                      className={inputCls}
+                    >
+                      {PATIENT_STATUS_OPTIONS.map(s => (
+                        <option key={s.value} value={s.value}>{s.label}</option>
+                      ))}
                     </select>
                   </div>
 

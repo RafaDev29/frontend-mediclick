@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///Users/rafadev/Documents/DYA/FRONTEND/NEXT/frontend-mediclick/app/home/page.tsx"],"sourcesContent":["export default function HomePage() {\n  return <div className=\"p-8 text-2xl font-bold text-[#0a2e6e]\">Inicio</div>\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBAAO,+YAAC;QAAI,WAAU;kBAAwC;;;;;;AAChE"}}]
-}

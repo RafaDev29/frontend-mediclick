@@ -5,9 +5,9 @@ export default function PlansPage() {
       desc: "Ideal para clínicas pequeñas que están comenzando su transformación digital.",
       highlight: false,
       features: [
-        "Gestión de citas médicas",
-        "Registro de pacientes",
-        "Hasta 2 médicos",
+        "Gestión de pacientes",
+        "Historial clínico básico",
+        "Hasta 2 usuarios",
         "Soporte por email",
         "Acceso web",
       ],
@@ -19,7 +19,7 @@ export default function PlansPage() {
       highlight: true,
       features: [
         "Todo lo del plan Básico",
-        "Hasta 10 médicos",
+        "Hasta 10 usuarios",
         "Historial clínico completo",
         "Reportes y estadísticas",
         "Soporte prioritario",
@@ -29,11 +29,11 @@ export default function PlansPage() {
     },
     {
       name: "Enterprise",
-      desc: "Para hospitales y grandes centros médicos con necesidades avanzadas.",
+      desc: "Para clínicas y grandes centros médicos con necesidades avanzadas.",
       highlight: false,
       features: [
         "Todo lo del plan Profesional",
-        "Médicos ilimitados",
+        "Usuarios ilimitados",
         "Módulos personalizados",
         "Integración con sistemas externos",
         "Soporte 24/7 dedicado",
@@ -51,7 +51,6 @@ export default function PlansPage() {
 
         .plans-root { font-family: 'DM Sans', sans-serif; background: #fff; color: #0a2e6e; }
 
-        /* HERO */
         .plans-hero {
           position: relative;
           padding: 120px 80px 100px;
@@ -129,7 +128,6 @@ export default function PlansPage() {
           font-weight: 300;
         }
 
-        /* PLANS */
         .plans-section {
           padding: 100px 80px;
           background: #f8fafc;
@@ -279,7 +277,6 @@ export default function PlansPage() {
           border-color: #e8f0fe;
         }
 
-        /* FOOTER */
         .plans-footer {
           background: #060f24;
           padding: 36px 80px;
@@ -332,9 +329,9 @@ export default function PlansPage() {
             <div className="plans-badge">Planes</div>
             <h1>
               El plan ideal para<br />
-              <em>cada hospital</em>
+              <em>cada clínica</em>
             </h1>
-            <p>Elige el plan que mejor se adapte al tamaño y necesidades de tu centro médico. Sin sorpresas.</p>
+            <p>Elige el plan que mejor se adapte al tamaño y necesidades de tu clínica. Sin sorpresas.</p>
           </div>
         </section>
 
@@ -373,7 +370,7 @@ export default function PlansPage() {
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span>MediClick</span>
+            <span>SGIP</span>
           </a>
           <p className="footer-copy">© 2026 DYA Solutions · Todos los derechos reservados</p>
         </footer>

@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-8:I[36345,["/_next/static/chunks/33074d3ff5d0cd2d.js","/_next/static/chunks/c4d90098b4abc498.js"],"OutletBoundary"]
-9:"$Sreact.suspense"
-2:T1aac,
+6:I[36345,["/_next/static/chunks/33074d3ff5d0cd2d.js","/_next/static/chunks/c4d90098b4abc498.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+2:T1a59,
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
         .home-root {
@@ -10,7 +10,6 @@
           color: #0a2e6e;
         }
 
-        /* HERO */
         .hero {
           position: relative;
           min-height: 92vh;
@@ -22,7 +21,7 @@
         .hero-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1800&q=80');
+          background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&q=80');
           background-size: cover;
           background-position: center;
           filter: brightness(0.22);
@@ -121,7 +120,6 @@
           box-shadow: 0 12px 40px rgba(20,87,192,0.5);
         }
 
-        /* FEATURES */
         .features {
           padding: 100px 80px;
           background: #f8fafc;
@@ -198,7 +196,6 @@
           font-weight: 300;
         }
 
-        /* STATS */
         .stats {
           padding: 80px;
           background: #0a2e6e;
@@ -224,7 +221,6 @@
           letter-spacing: 0.04em;
         }
 
-        /* FOOTER */
         .footer {
           background: #060f24;
           padding: 36px 80px;
@@ -270,10 +266,8 @@
           .stats { padding: 60px 24px; }
           .footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
         }
-      0:{"buildId":"IPRjgbERjRUTEZkkP8IGg","rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3"],null,"$L4"]}],"loading":null,"isPartial":false}
-3:["$","div",null,{"className":"home-root","children":[["$","section",null,{"className":"hero","children":[["$","div",null,{"className":"hero-bg"}],["$","div",null,{"className":"hero-overlay"}],["$","div",null,{"className":"hero-content","children":[["$","div",null,{"className":"hero-badge","children":[["$","span",null,{}],"Plataforma hospitalaria digital"]}],["$","h1",null,{"children":["Gestión de citas",["$","br",null,{}],["$","em",null,{"children":"médicas simple"}],["$","br",null,{}],"y eficiente"]}],["$","p",null,{"children":"MediClick centraliza la agenda médica de tu hospital. Programa, confirma y da seguimiento a cada cita con facilidad."}],["$","a",null,{"href":"/login","className":"hero-cta","children":["Comenzar ahora",["$","svg",null,{"width":"16","height":"16","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":"2.5","children":["$","path",null,{"d":"M5 12h14M12 5l7 7-7 7"}]}]]}]]}]]}],["$","section",null,{"className":"features","children":[["$","p",null,{"className":"section-label","children":"¿Por qué MediClick?"}],["$","h2",null,{"className":"section-title","children":["Todo lo que necesita",["$","br",null,{}],"tu hospital"]}],["$","p",null,{"className":"section-sub","children":"Una plataforma diseñada para simplificar la gestión médica diaria, desde la agenda hasta el historial del paciente."}],["$","div",null,{"className":"features-grid","children":[["$","div","0",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","rect",null,{"x":"3","y":"4","width":"18","height":"18","rx":"2"}],["$","line",null,{"x1":"16","y1":"2","x2":"16","y2":"6"}],["$","line",null,{"x1":"8","y1":"2","x2":"8","y2":"6"}],["$","line",null,{"x1":"3","y1":"10","x2":"21","y2":"10"}]]}]}],["$","h3",null,{"children":"Agenda inteligente"}],["$","p",null,{"children":"Programa y gestiona citas médicas en tiempo real, evitando conflictos de horarios y reduciendo ausencias."}]]}],["$","div","1",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","path",null,{"d":"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"}],["$","circle",null,{"cx":"9","cy":"7","r":"4"}],["$","path",null,{"d":"M23 21v-2a4 4 0 0 0-3-3.87"}],["$","path",null,{"d":"M16 3.13a4 4 0 0 1 0 7.75"}]]}]}],["$","h3",null,{"children":"Gestión de pacientes"}],["$","p",null,{"children":"Centraliza el historial, datos y atenciones de cada paciente en un solo lugar, accesible para todo el equipo médico."}]]}],["$","div","2",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":["$","path",null,{"d":"M22 12h-4l-3 9L9 3l-3 9H2"}]}]}],["$","h3",null,{"children":"Seguimiento en tiempo real"}],["$","p",null,{"children":"Monitorea el estado de cada atención médica con actualizaciones instantáneas para médicos y recepcionistas."}]]}],["$","div","3",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","rect",null,{"x":"3","y":"11","width":"18","height":"11","rx":"2"}],["$","path",null,{"d":"M7 11V7a5 5 0 0 1 10 0v4"}]]}]}],["$","h3",null,{"children":"Acceso por roles"}],["$","p",null,{"children":"Control de acceso seguro para administradores, médicos y recepcionistas, cada uno con su vista personalizada."}]]}]]}]]}],["$","section",null,{"className":"stats","children":[["$","div","0",{"children":[["$","div",null,{"className":"stat-value","children":"99.9%"}],["$","div",null,{"className":"stat-label","children":"Disponibilidad garantizada"}]]}],["$","div","1",{"children":[["$","div",null,{"className":"stat-value","children":"< 1s"}],["$","div",null,{"className":"stat-label","children":"Tiempo de respuesta"}]]}],["$","div","2",{"children":[["$","div",null,{"className":"stat-value","children":"256bit"}],["$","div",null,{"className":"stat-label","children":"Encriptación de datos"}]]}],["$","div","3",{"children":[["$","div",null,{"className":"stat-value","children":"24/7"}],["$","div",null,{"className":"stat-label","children":"Soporte disponible"}]]}]]}],["$","footer",null,{"className":"footer","children":[["$","a",null,{"href":"/home","className":"footer-logo","children":[["$","div",null,{"className":"footer-logo-icon","children":["$","svg",null,{"width":"16","height":"16","viewBox":"0 0 24 24","fill":"none","children":"$L5"}]}],"$L6"]}],"$L7"]}]]}]
-4:["$","$L8",null,{"children":["$","$9",null,{"name":"Next.MetadataOutlet","children":"$@a"}]}]
-5:["$","path",null,{"d":"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5","stroke":"white","strokeWidth":"2","strokeLinecap":"round","strokeLinejoin":"round"}]
-6:["$","span",null,{"children":"MediClick"}]
-7:["$","p",null,{"className":"footer-copy","children":"© 2026 DYA Solutions · Todos los derechos reservados"}]
-a:null
+      0:{"buildId":"cpx9s5uMZNUR_FZrit4j3","rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3"],null,"$L4"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"home-root","children":[["$","section",null,{"className":"hero","children":[["$","div",null,{"className":"hero-bg"}],["$","div",null,{"className":"hero-overlay"}],["$","div",null,{"className":"hero-content","children":[["$","div",null,{"className":"hero-badge","children":[["$","span",null,{}],"Plataforma clínica digital"]}],["$","h1",null,{"children":["Gestión de pacientes",["$","br",null,{}],["$","em",null,{"children":"completa y segura"}],["$","br",null,{}],"en tu clínica"]}],["$","p",null,{"children":"SGIP centraliza el historial clínico, datos y atenciones de cada paciente. Todo tu equipo médico conectado en un solo lugar."}],["$","a",null,{"href":"/login","className":"hero-cta","children":["Comenzar ahora",["$","svg",null,{"width":"16","height":"16","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":"2.5","children":["$","path",null,{"d":"M5 12h14M12 5l7 7-7 7"}]}]]}]]}]]}],["$","section",null,{"className":"features","children":[["$","p",null,{"className":"section-label","children":"¿Por qué SGIP?"}],["$","h2",null,{"className":"section-title","children":["Todo lo que necesita",["$","br",null,{}],"tu clínica"]}],["$","p",null,{"className":"section-sub","children":"Una plataforma diseñada para simplificar la gestión de pacientes, desde el historial clínico hasta el seguimiento de cada atención."}],["$","div",null,{"className":"features-grid","children":[["$","div","0",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","path",null,{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"}],["$","polyline",null,{"points":"14 2 14 8 20 8"}],["$","line",null,{"x1":"12","y1":"18","x2":"12","y2":"12"}],["$","line",null,{"x1":"9","y1":"15","x2":"15","y2":"15"}]]}]}],["$","h3",null,{"children":"Historial clínico completo"}],["$","p",null,{"children":"Registra y accede al historial médico de cada paciente: diagnósticos, tratamientos, exámenes, alergias y evoluciones en un solo lugar."}]]}],["$","div","1",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","path",null,{"d":"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"}],["$","circle",null,{"cx":"9","cy":"7","r":"4"}],["$","path",null,{"d":"M23 21v-2a4 4 0 0 0-3-3.87"}],["$","path",null,{"d":"M16 3.13a4 4 0 0 1 0 7.75"}]]}]}],["$","h3",null,{"children":"Gestión de pacientes"}],["$","p",null,{"children":"Administra el perfil completo de cada paciente: datos personales, contactos de emergencia, antecedentes familiares y documentos adjuntos."}]]}],["$","div","2",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":["$","path",null,{"d":"M22 12h-4l-3 9L9 3l-3 9H2"}]}]}],["$","h3",null,{"children":"Seguimiento de atenciones"}],["$","p",null,{"children":"Monitorea el estado clínico de cada paciente con actualizaciones en tiempo real para médicos, enfermeras y recepcionistas."}]]}],["$","div","3",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","rect",null,{"x":"3","y":"11","width":"18","height":"11","rx":"2"}],["$","path",null,{"d":"M7 11V7a5 5 0 0 1 10 0v4"}]]}]}],["$","h3",null,{"children":"Acceso por roles"}],["$","p",null,{"children":"Control de acceso seguro para administradores, médicos y recepcionistas de la clínica, cada uno con su vista personalizada."}]]}]]}]]}],["$","section",null,{"className":"stats","children":[["$","div","0",{"children":[["$","div",null,{"className":"stat-value","children":"99.9%"}],["$","div",null,{"className":"stat-label","children":"Disponibilidad garantizada"}]]}],["$","div","1",{"children":[["$","div",null,{"className":"stat-value","children":"< 1s"}],["$","div",null,{"className":"stat-label","children":"Tiempo de respuesta"}]]}],["$","div","2",{"children":[["$","div",null,{"className":"stat-value","children":"256bit"}],["$","div",null,{"className":"stat-label","children":"Encriptación de datos"}]]}],["$","div","3",{"children":[["$","div",null,{"className":"stat-value","children":"24/7"}],["$","div",null,{"className":"stat-label","children":"Soporte disponible"}]]}]]}],"$L5"]}]
+4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
+5:["$","footer",null,{"className":"footer","children":[["$","a",null,{"href":"/home","className":"footer-logo","children":[["$","div",null,{"className":"footer-logo-icon","children":["$","svg",null,{"width":"16","height":"16","viewBox":"0 0 24 24","fill":"none","children":["$","path",null,{"d":"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5","stroke":"white","strokeWidth":"2","strokeLinecap":"round","strokeLinejoin":"round"}]}]}],["$","span",null,{"children":"MediClick"}]]}],["$","p",null,{"className":"footer-copy","children":"© 2026 DYA Solutions · Todos los derechos reservados"}]]}]
+8:null

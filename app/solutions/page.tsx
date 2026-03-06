@@ -6,7 +6,6 @@ export default function SolutionsPage() {
 
         .sol-root { font-family: 'DM Sans', sans-serif; background: #fff; color: #0a2e6e; }
 
-        /* HERO */
         .sol-hero {
           position: relative;
           padding: 120px 80px 100px;
@@ -83,7 +82,6 @@ export default function SolutionsPage() {
           max-width: 520px;
         }
 
-        /* MODULES */
         .sol-modules {
           padding: 100px 80px;
           background: #f8fafc;
@@ -187,7 +185,11 @@ export default function SolutionsPage() {
           border-radius: 6px;
         }
 
-        /* ROLES */
+        .module-tag.soon {
+          color: #92400e;
+          background: #fef3c7;
+        }
+
         .sol-roles {
           padding: 100px 80px;
           background: #fff;
@@ -267,7 +269,6 @@ export default function SolutionsPage() {
           flex-shrink: 0;
         }
 
-        /* FOOTER */
         .sol-footer {
           background: #060f24;
           padding: 36px 80px;
@@ -320,10 +321,10 @@ export default function SolutionsPage() {
             <div className="sol-badge">Soluciones</div>
             <h1>
               Herramientas diseñadas<br />
-              para <em>cada rol</em> del hospital
+              para <em>cada rol</em> de la clínica
             </h1>
             <p>
-              MediClick ofrece módulos especializados para cada área de tu hospital, desde la recepción hasta la consulta médica.
+              SGIP ofrece módulos especializados para cada área de tu clínica, desde la recepción hasta la consulta médica.
             </p>
           </div>
         </section>
@@ -332,22 +333,10 @@ export default function SolutionsPage() {
         <section className="sol-modules">
           <p className="section-label">Módulos</p>
           <h2 className="section-title">Todo en una sola plataforma</h2>
-          <p className="section-sub">Cada módulo está diseñado para resolver un problema específico del flujo hospitalario diario.</p>
+          <p className="section-sub">Cada módulo está diseñado para resolver un problema específico del flujo clínico diario.</p>
 
           <div className="modules-grid">
             {[
-              {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                ),
-                title: "Gestión de Citas",
-                desc: "Agenda médica centralizada con vista diaria, semanal y mensual. Confirmaciones automáticas y control de disponibilidad.",
-                tag: "Disponible"
-              },
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
@@ -357,8 +346,23 @@ export default function SolutionsPage() {
                   </svg>
                 ),
                 title: "Gestión de Pacientes",
-                desc: "Historial completo de cada paciente, atenciones previas, datos personales y seguimiento de tratamientos.",
-                tag: "Disponible"
+                desc: "Administra el perfil completo de cada paciente: datos personales, contactos de emergencia, antecedentes y documentos adjuntos.",
+                tag: "Disponible",
+                soon: false,
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <line x1="9" y1="15" x2="15" y2="15"/>
+                  </svg>
+                ),
+                title: "Historial Clínico",
+                desc: "Registro digital completo de diagnósticos, tratamientos, exámenes, alergias y evoluciones por paciente.",
+                tag: "Disponible",
+                soon: false,
               },
               {
                 icon: (
@@ -367,28 +371,29 @@ export default function SolutionsPage() {
                   </svg>
                 ),
                 title: "Reportes y Estadísticas",
-                desc: "Métricas en tiempo real sobre atenciones, citas completadas, cancelaciones y rendimiento del equipo médico.",
-                tag: "Próximamente"
+                desc: "Métricas en tiempo real sobre atenciones, diagnósticos frecuentes, evolución de pacientes y rendimiento del equipo médico.",
+                tag: "Próximamente",
+                soon: true,
               },
               {
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1457c0" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-                    <polyline points="10 9 9 9 8 9"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
                   </svg>
                 ),
-                title: "Historial Clínico",
-                desc: "Registro digital de diagnósticos, recetas y notas médicas por paciente, organizado y de fácil acceso.",
-                tag: "Próximamente"
+                title: "Agenda de Citas",
+                desc: "Programación de citas vinculada directamente al perfil del paciente, con vista diaria, semanal y control de disponibilidad.",
+                tag: "Próximamente",
+                soon: true,
               },
             ].map((m, i) => (
               <div className="module-card" key={i}>
                 <div className="module-icon">{m.icon}</div>
                 <h3>{m.title}</h3>
                 <p>{m.desc}</p>
-                <span className="module-tag">{m.tag}</span>
+                <span className={`module-tag${m.soon ? ' soon' : ''}`}>{m.tag}</span>
               </div>
             ))}
           </div>
@@ -398,7 +403,7 @@ export default function SolutionsPage() {
         <section className="sol-roles">
           <p className="section-label">Por tipo de usuario</p>
           <h2 className="section-title">Una experiencia para cada rol</h2>
-          <p className="section-sub">Cada usuario accede solo a lo que necesita, con una interfaz adaptada a su función dentro del hospital.</p>
+          <p className="section-sub">Cada usuario accede solo a lo que necesita, con una interfaz adaptada a su función dentro de la clínica.</p>
 
           <div className="roles-grid">
             {[
@@ -414,7 +419,7 @@ export default function SolutionsPage() {
                 benefits: [
                   "Gestión completa de usuarios y roles",
                   "Acceso a todos los módulos y reportes",
-                  "Configuración del sistema hospitalario",
+                  "Configuración del sistema de la clínica",
                   "Supervisión de toda la operación",
                 ]
               },
@@ -428,10 +433,10 @@ export default function SolutionsPage() {
                 role: "Médico",
                 sub: "Gestión de consultas y pacientes",
                 benefits: [
-                  "Vista de agenda y citas del día",
-                  "Acceso al historial clínico del paciente",
-                  "Registro de diagnósticos y notas",
-                  "Seguimiento de atenciones activas",
+                  "Vista de sus pacientes asignados",
+                  "Acceso y edición del historial clínico",
+                  "Registro de diagnósticos y evoluciones",
+                  "Seguimiento de tratamientos activos",
                 ]
               },
               {
@@ -444,12 +449,12 @@ export default function SolutionsPage() {
                   </svg>
                 ),
                 role: "Recepcionista",
-                sub: "Gestión de agenda y pacientes",
+                sub: "Registro y gestión de pacientes",
                 benefits: [
-                  "Agendamiento y reprogramación de citas",
-                  "Registro de nuevos pacientes",
-                  "Confirmación y cancelación de citas",
-                  "Vista general de la agenda diaria",
+                  "Registro y actualización de pacientes",
+                  "Consulta de datos y contactos",
+                  "Gestión de llegadas y atenciones del día",
+                  "Vista general de la agenda de la clínica",
                 ]
               },
             ].map((r, i) => (

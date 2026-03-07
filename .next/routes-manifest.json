@@ -77,6 +77,12 @@
       "namedRegex": "^/dashboard/patients(?:/)?$"
     },
     {
+      "page": "/dashboard/reports",
+      "regex": "^/dashboard/reports(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/reports(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},

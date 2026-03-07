@@ -2,6 +2,8 @@
   "/(auth)/login/page": "app/(auth)/login/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/patients/[id]/page": "app/dashboard/patients/[id]/page.js",
-  "/dashboard/patients/[id]/records/[recordId]/page": "app/dashboard/patients/[id]/records/[recordId]/page.js",
-  "/dashboard/patients/page": "app/dashboard/patients/page.js"
+  "/dashboard/patients/page": "app/dashboard/patients/page.js",
+  "/dashboard/reports/page": "app/dashboard/reports/page.js",
+  "/home/page": "app/home/page.js",
+  "/page": "app/page.js"
 }

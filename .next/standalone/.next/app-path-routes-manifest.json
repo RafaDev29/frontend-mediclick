@@ -7,6 +7,7 @@
   "/dashboard/patients/[id]/page": "/dashboard/patients/[id]",
   "/dashboard/patients/[id]/records/[recordId]/page": "/dashboard/patients/[id]/records/[recordId]",
   "/dashboard/patients/page": "/dashboard/patients",
+  "/dashboard/reports/page": "/dashboard/reports",
   "/favicon.ico/route": "/favicon.ico",
   "/home/page": "/home",
   "/page": "/",

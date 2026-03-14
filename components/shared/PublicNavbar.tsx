@@ -38,7 +38,7 @@ export default function PublicNavbar() {
         }
 
         .nav-logo-img {
-          height: 40px;
+          height: 70px;
           width: auto;
           object-fit: contain;
         }
@@ -49,18 +49,9 @@ export default function PublicNavbar() {
           line-height: 1.2;
         }
 
-        .nav-logo-title {
-          font-weight: 700;
-          color: #fff;
-          font-size: 18px;
-          letter-spacing: -0.02em;
-        }
+      
 
-        .nav-logo-sub {
-          font-size: 10px;
-          color: rgba(255,255,255,0.5);
-          letter-spacing: 0.04em;
-        }
+    
 
         /* Desktop links */
         .nav-links {
@@ -251,9 +242,6 @@ export default function PublicNavbar() {
             height: 32px;
           }
 
-          .nav-logo-title {
-            font-size: 16px;
-          }
         }
       `}</style>
 
@@ -263,15 +251,15 @@ export default function PublicNavbar() {
           <Image
             src="/logoooo.png"
             alt="SGIP"
-            width={300}
-            height={80}
+            width={400}
+            height={90}
             className="nav-logo-img"
             unoptimized
             priority
           />
           <div className="nav-logo-text">
-            <span className="nav-logo-title">SGIP</span>
-            <span className="nav-logo-sub">Sistema de Gestión Integral de Pacientes</span>
+            <span className="text-2xl font-bold text-white">SGIP</span>
+            <span className="text-lg text-white">Sistema de Gestión Integral de Pacientes</span>
           </div>
         </Link>
 

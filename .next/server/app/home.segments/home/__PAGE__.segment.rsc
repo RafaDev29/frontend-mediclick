@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
 6:I[36345,["/_next/static/chunks/33074d3ff5d0cd2d.js","/_next/static/chunks/c4d90098b4abc498.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-9:I[1793,["/_next/static/chunks/0a6c7d1c132a20d2.js"],"Image"]
-2:T28bc,
+9:I[1793,["/_next/static/chunks/1b58afe93242196d.js"],"Image"]
+2:T287e,
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
         * {
@@ -29,7 +29,7 @@
         .hero-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&q=80');
+          background-image: url('/home.jpeg');
           background-size: cover;
           background-position: center;
           filter: brightness(0.22);
@@ -39,7 +39,7 @@
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(120deg, #0a2e6ecc 0%, #1457c099 60%, transparent 100%);
+          background: linear-gradient(120deg, #0a2e6ecc 0%, #1457c099 10%, transparent 100%);
           z-index: 1;
         }
 
@@ -425,7 +425,7 @@
             font-size: 12px;
           }
         }
-      0:{"buildId":"lvVRXalC8JetRAZ7ZEZGv","rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3"],null,"$L4"]}],"loading":null,"isPartial":false}
+      0:{"buildId":"3uzwoqYn3S_rsS9bQLw8l","rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3"],null,"$L4"]}],"loading":null,"isPartial":false}
 3:["$","div",null,{"className":"home-root","children":[["$","section",null,{"className":"hero","children":[["$","div",null,{"className":"hero-bg"}],["$","div",null,{"className":"hero-overlay"}],["$","div",null,{"className":"hero-content","children":[["$","div",null,{"className":"hero-badge","children":[["$","span",null,{}],"Plataforma clínica digital"]}],["$","h1",null,{"children":["Gestión de pacientes",["$","br",null,{}],["$","em",null,{"children":"completa y segura"}],["$","br",null,{}],"en tu clínica"]}],["$","p",null,{"children":"SGIP centraliza el historial clínico, datos y atenciones de cada paciente. Todo tu equipo médico conectado en un solo lugar."}],["$","a",null,{"href":"/login","className":"hero-cta","children":["Comenzar ahora",["$","svg",null,{"width":"16","height":"16","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":"2.5","children":["$","path",null,{"d":"M5 12h14M12 5l7 7-7 7"}]}]]}]]}]]}],["$","section",null,{"className":"features","children":[["$","p",null,{"className":"section-label","children":"¿Por qué SGIP?"}],["$","h2",null,{"className":"section-title","children":["Todo lo que necesita",["$","br",null,{}],"tu clínica"]}],["$","p",null,{"className":"section-sub","children":"Una plataforma diseñada para simplificar la gestión de pacientes, desde el historial clínico hasta el seguimiento de cada atención."}],["$","div",null,{"className":"features-grid","children":[["$","div","0",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","path",null,{"d":"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"}],["$","polyline",null,{"points":"14 2 14 8 20 8"}],["$","line",null,{"x1":"12","y1":"18","x2":"12","y2":"12"}],["$","line",null,{"x1":"9","y1":"15","x2":"15","y2":"15"}]]}]}],["$","h3",null,{"children":"Historial clínico completo"}],["$","p",null,{"children":"Registra y accede al historial médico de cada paciente: diagnósticos, tratamientos, exámenes, alergias y evoluciones en un solo lugar."}]]}],["$","div","1",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","path",null,{"d":"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"}],["$","circle",null,{"cx":"9","cy":"7","r":"4"}],["$","path",null,{"d":"M23 21v-2a4 4 0 0 0-3-3.87"}],["$","path",null,{"d":"M16 3.13a4 4 0 0 1 0 7.75"}]]}]}],["$","h3",null,{"children":"Gestión de pacientes"}],["$","p",null,{"children":"Administra el perfil completo de cada paciente: datos personales, contactos de emergencia, antecedentes familiares y documentos adjuntos."}]]}],["$","div","2",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":["$","path",null,{"d":"M22 12h-4l-3 9L9 3l-3 9H2"}]}]}],["$","h3",null,{"children":"Seguimiento de atenciones"}],["$","p",null,{"children":"Monitorea el estado clínico de cada paciente con actualizaciones en tiempo real para médicos, enfermeras y recepcionistas."}]]}],["$","div","3",{"className":"feature-card","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"width":"22","height":"22","viewBox":"0 0 24 24","fill":"none","stroke":"#1457c0","strokeWidth":"2","children":[["$","rect",null,{"x":"3","y":"11","width":"18","height":"11","rx":"2"}],["$","path",null,{"d":"M7 11V7a5 5 0 0 1 10 0v4"}]]}]}],["$","h3",null,{"children":"Acceso por roles"}],["$","p",null,{"children":"Control de acceso seguro para administradores, médicos y recepcionistas de la clínica, cada uno con su vista personalizada."}]]}]]}]]}],["$","section",null,{"className":"stats","children":[["$","div","0",{"children":[["$","div",null,{"className":"stat-value","children":"99.9%"}],["$","div",null,{"className":"stat-label","children":"Disponibilidad garantizada"}]]}],["$","div","1",{"children":[["$","div",null,{"className":"stat-value","children":"< 1s"}],["$","div",null,{"className":"stat-label","children":"Tiempo de respuesta"}]]}],["$","div","2",{"children":[["$","div",null,{"className":"stat-value","children":"256bit"}],["$","div",null,{"className":"stat-label","children":"Encriptación de datos"}]]}],["$","div","3",{"children":[["$","div",null,{"className":"stat-value","children":"24/7"}],["$","div",null,{"className":"stat-label","children":"Soporte disponible"}]]}]]}],"$L5"]}]
 4:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 5:["$","footer",null,{"className":"footer","children":[["$","a",null,{"href":"/home","className":"footer-logo","children":[["$","$L9",null,{"src":"/logoooo.png","alt":"SGIP","width":120,"height":40,"className":"h-8 w-auto object-contain","unoptimized":true}],["$","span",null,{"children":"SGIP"}]]}],["$","p",null,{"className":"footer-copy","children":"© 2026 DYA Solutions · Todos los derechos reservados"}]]}]

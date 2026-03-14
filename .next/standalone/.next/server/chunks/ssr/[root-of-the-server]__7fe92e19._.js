@@ -20,7 +20,7 @@ module.exports=[75556,(a,b,c)=>{"use strict";b.exports=a.r(22240).vendored["reac
         }
 
         .nav-logo-img {
-          height: 40px;
+          height: 70px;
           width: auto;
           object-fit: contain;
         }
@@ -31,18 +31,9 @@ module.exports=[75556,(a,b,c)=>{"use strict";b.exports=a.r(22240).vendored["reac
           line-height: 1.2;
         }
 
-        .nav-logo-title {
-          font-weight: 700;
-          color: #fff;
-          font-size: 18px;
-          letter-spacing: -0.02em;
-        }
+      
 
-        .nav-logo-sub {
-          font-size: 10px;
-          color: rgba(255,255,255,0.5);
-          letter-spacing: 0.04em;
-        }
+    
 
         /* Desktop links */
         .nav-links {
@@ -233,10 +224,7 @@ module.exports=[75556,(a,b,c)=>{"use strict";b.exports=a.r(22240).vendored["reac
             height: 32px;
           }
 
-          .nav-logo-title {
-            font-size: 16px;
-          }
         }
-      `}),(0,b.jsxs)("nav",{className:"public-nav",children:[(0,b.jsxs)(e.default,{href:"/home",className:"nav-logo",children:[(0,b.jsx)(d.default,{src:"/logoooo.png",alt:"SGIP",width:300,height:80,className:"nav-logo-img",unoptimized:!0,priority:!0}),(0,b.jsxs)("div",{className:"nav-logo-text",children:[(0,b.jsx)("span",{className:"nav-logo-title",children:"SGIP"}),(0,b.jsx)("span",{className:"nav-logo-sub",children:"Sistema de Gestión Integral de Pacientes"})]})]}),(0,b.jsx)("div",{className:"nav-links",children:g.map(c=>(0,b.jsx)(e.default,{href:c.path,className:`nav-link ${a===c.path?"active":""}`,children:c.label},c.path))}),(0,b.jsxs)(e.default,{href:"/login",className:"nav-cta",children:["Iniciar sesión",(0,b.jsxs)("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",children:[(0,b.jsx)("path",{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}),(0,b.jsx)("polyline",{points:"10 17 15 12 10 7"}),(0,b.jsx)("line",{x1:"15",y1:"12",x2:"3",y2:"12"})]})]}),(0,b.jsxs)("button",{className:`nav-hamburger ${h?"open":""}`,onClick:()=>i(!h),"aria-label":"Menú",children:[(0,b.jsx)("span",{className:"hamburger-line"}),(0,b.jsx)("span",{className:"hamburger-line"}),(0,b.jsx)("span",{className:"hamburger-line"})]})]}),(0,b.jsxs)("div",{className:`nav-mobile-menu ${h?"open":""}`,children:[g.map(c=>(0,b.jsx)(e.default,{href:c.path,className:`nav-mobile-link ${a===c.path?"active":""}`,onClick:()=>i(!1),children:c.label},c.path)),(0,b.jsxs)(e.default,{href:"/login",className:"nav-mobile-cta",onClick:()=>i(!1),children:["Iniciar sesión",(0,b.jsxs)("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",children:[(0,b.jsx)("path",{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}),(0,b.jsx)("polyline",{points:"10 17 15 12 10 7"}),(0,b.jsx)("line",{x1:"15",y1:"12",x2:"3",y2:"12"})]})]})]})]})}function i(){let a=(0,c.usePathname)();return["/login","/dashboard"].some(b=>a.startsWith(b))?null:(0,b.jsx)(h,{})}a.s(["default",()=>i],29828)}];
+      `}),(0,b.jsxs)("nav",{className:"public-nav",children:[(0,b.jsxs)(e.default,{href:"/home",className:"nav-logo",children:[(0,b.jsx)(d.default,{src:"/logoooo.png",alt:"SGIP",width:400,height:90,className:"nav-logo-img",unoptimized:!0,priority:!0}),(0,b.jsxs)("div",{className:"nav-logo-text",children:[(0,b.jsx)("span",{className:"text-2xl font-bold text-white",children:"SGIP"}),(0,b.jsx)("span",{className:"text-lg text-white",children:"Sistema de Gestión Integral de Pacientes"})]})]}),(0,b.jsx)("div",{className:"nav-links",children:g.map(c=>(0,b.jsx)(e.default,{href:c.path,className:`nav-link ${a===c.path?"active":""}`,children:c.label},c.path))}),(0,b.jsxs)(e.default,{href:"/login",className:"nav-cta",children:["Iniciar sesión",(0,b.jsxs)("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",children:[(0,b.jsx)("path",{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}),(0,b.jsx)("polyline",{points:"10 17 15 12 10 7"}),(0,b.jsx)("line",{x1:"15",y1:"12",x2:"3",y2:"12"})]})]}),(0,b.jsxs)("button",{className:`nav-hamburger ${h?"open":""}`,onClick:()=>i(!h),"aria-label":"Menú",children:[(0,b.jsx)("span",{className:"hamburger-line"}),(0,b.jsx)("span",{className:"hamburger-line"}),(0,b.jsx)("span",{className:"hamburger-line"})]})]}),(0,b.jsxs)("div",{className:`nav-mobile-menu ${h?"open":""}`,children:[g.map(c=>(0,b.jsx)(e.default,{href:c.path,className:`nav-mobile-link ${a===c.path?"active":""}`,onClick:()=>i(!1),children:c.label},c.path)),(0,b.jsxs)(e.default,{href:"/login",className:"nav-mobile-cta",onClick:()=>i(!1),children:["Iniciar sesión",(0,b.jsxs)("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",children:[(0,b.jsx)("path",{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}),(0,b.jsx)("polyline",{points:"10 17 15 12 10 7"}),(0,b.jsx)("line",{x1:"15",y1:"12",x2:"3",y2:"12"})]})]})]})]})}function i(){let a=(0,c.usePathname)();return["/login","/dashboard"].some(b=>a.startsWith(b))?null:(0,b.jsx)(h,{})}a.s(["default",()=>i],29828)}];
 
 //# sourceMappingURL=%5Broot-of-the-server%5D__7fe92e19._.js.map

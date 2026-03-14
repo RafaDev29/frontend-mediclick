@@ -30,7 +30,7 @@ export default function HomePage() {
         .hero-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&q=80');
+          background-image: url('/home.jpeg');
           background-size: cover;
           background-position: center;
           filter: brightness(0.22);
@@ -40,7 +40,7 @@ export default function HomePage() {
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(120deg, #0a2e6ecc 0%, #1457c099 60%, transparent 100%);
+          background: linear-gradient(120deg, #0a2e6ecc 0%, #1457c099 10%, transparent 100%);
           z-index: 1;
         }
 
